@@ -11,6 +11,7 @@ public class LeagueInvaders {
 	GamePanel GP;
 	LeagueInvaders() {
 		GP = new GamePanel();
+		GP.StartGame();
 	}
 
 void setup() {
@@ -20,11 +21,13 @@ void setup() {
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.getContentPane().setPreferredSize(new Dimension(width, height));
 	frame.pack();
+	frame.addKeyListener(GP);
 }
 
 	public static void main(String[] args) {
 		LeagueInvaders LI = new LeagueInvaders();
 		LI.setup();
+		
 	}
 
 }
