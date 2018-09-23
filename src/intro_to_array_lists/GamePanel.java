@@ -20,6 +20,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font titleFont;
 	Font startFont;
 	Font instructionsFont;
+	Rocketship rocket = new Rocketship(250, 700, 50, 50);
+	ObjectManager manager = new ObjectManager(rocket);
 	GamePanel() {
 		timer = new Timer(1000 / 60, this);
 		titleFont = new Font("Arial", Font.PLAIN, 48);
@@ -36,7 +38,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateGameState() {
-
+		manager.update();
 	}
 
 	void updateEndState() {
@@ -51,11 +53,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.drawString("LEAGUE INVADERS", 20, 150);
 		g.setFont(startFont);
 		g.drawString("Press ENTER to start", 20, 300);
+		g.setFont(instructionsFont);
+		g.drawString("Press SPACE for instructions", 20, 450);
 	}
 
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 500, 800);
+		manager.draw(g);
 
 	}
 
@@ -63,7 +68,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.RED);
 		g.fillRect(0, 0, 500, 800);
 		g.setColor(Color.BLACK);
-		g.drawString("LEAGUE INVADERS", 20, 150);
+		g.drawString("GAME OVER!", 20, 150);
 	}
 
 	@Override
@@ -123,11 +128,29 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			currentState = MENU_STATE;
 
 		}
+		if(KeyEvent.VK_UP == e.getKeyCode()) {
+			System.out.println("up");
+			rocket.y=rocket.y-rocket.speed;
+		}
+		if(KeyEvent.VK_DOWN == e.getKeyCode()) {
+			System.out.println("down");
+			rocket.y=rocket.y+rocket.speed;
+		}
+		if(KeyEvent.VK_LEFT == e.getKeyCode()) {
+			System.out.println("left");
+			rocket.x=rocket.x-rocket.speed;
+		}
+		if(KeyEvent.VK_RIGHT == e.getKeyCode()) {
+			System.out.println("right");
+			rocket.x=rocket.x+rocket.speed;
+		}
+		System.out.println(rocket.x + "," + rocket.y);
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("HiR");
+		rocket.update();
 	}
 }
