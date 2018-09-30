@@ -122,7 +122,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if(KeyEvent.VK_ENTER == e.getKeyCode()){
 			currentState = GAME_STATE;
 		}
-		
+		if(KeyEvent.VK_SPACE == e.getKeyCode()) {
+			manager.addProjectile(new Projectile(rocket.x + 20, rocket.y, 10, 10));
+			System.out.println("Space");
+		}
 		if (currentState > END_STATE) {
 
 			currentState = MENU_STATE;

@@ -18,7 +18,7 @@ public GameObject(int x, int y, int width, int height){
 }
 
 void update() {
-	
+
 			
 }
 public void draw(Graphics g) {
