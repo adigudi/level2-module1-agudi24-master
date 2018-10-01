@@ -2,6 +2,7 @@ package intro_to_array_lists;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 public class Alien extends GameObject {
 
@@ -10,7 +11,10 @@ public class Alien extends GameObject {
 		// TODO Auto-generated constructor stub
 	}
 	void update() {
-		y = y + 10;
+		super.update();
+		Random r = new Random();
+		int rand = r.nextInt(20);
+		y = y + rand;
 	}
 	public void draw(Graphics g) {
 		g.setColor(Color.YELLOW);
