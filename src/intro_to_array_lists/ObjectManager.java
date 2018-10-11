@@ -10,6 +10,11 @@ public class ObjectManager {
 	ArrayList<Alien> aliens = new ArrayList<Alien>();
 	long enemyTimer = 0;
 	int enemySpawnTime = 1000;
+	static int score = 0;
+
+	public int getScore() {
+		return score;
+	}
 
 	void addAlien(Alien a) {
 		aliens.add(a);
@@ -33,6 +38,9 @@ public class ObjectManager {
 			Alien b = aliens.get(i);
 			b.update();
 		}
+		purgeAlien();
+		purgeProjectile();
+		
 
 	}
 
@@ -61,41 +69,45 @@ public class ObjectManager {
 
 	}
 
-	void purgeObjects(Alien c) {
+	void purgeAlien() {
 		for (int i = 0; i < aliens.size(); i++) {
-			c = aliens.get(i);
-			if(c.isAlive = false) {
+			Alien c = aliens.get(i);
+			if (c.isAlive == false) {
 				aliens.remove(c);
 			}
 		}
+	}
+
+	void purgeProjectile() {
 		for (int i = 0; i < projectiles.size(); i++) {
 			Projectile d = projectiles.get(i);
-			if(d.isAlive = false) {
+			if (d.isAlive == false) {
 				projectiles.remove(d);
 			}
 		}
 	}
-	
 
-void checkCollision() {
-	for(Alien a : aliens){
-        if(r.collisionBox.intersects(a.collisionBox)){
-                r.isAlive = false;
-                System.out.println("You Die!");
-                break;
-        }
-    for(Projectile p : projectiles) {
-    		if(p.collisionBox.intersects(a.collisionBox)) {
-    				a.isAlive = false;
-    				p.isAlive = false;
-    				purgeObjects(a);
-    				System.out.println("Hit!");
-    		
-    		}
-    }
+	void checkCollision() {
+		for (Alien a : aliens) {
+			if (r.collisionBox.intersects(a.collisionBox)) {
+				r.isAlive = false;
+				System.out.println("You Die!");
+				GamePanel.changeCurrentState();
+				break;
+			}
+
+			for (Projectile p : projectiles) {
+				if (p.collisionBox.intersects(a.collisionBox)) {
+					a.isAlive = false;
+					p.isAlive = false;
+					System.out.println("Hit!");
+					score++;
+					getScore();
+
+				}
+			}
 		}
 
-}
-	
-}
+	}
 
+}
