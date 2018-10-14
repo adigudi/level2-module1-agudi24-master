@@ -91,8 +91,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void drawGameState(Graphics g) {
-		g.drawImage(GamePanel.spaceImg, 500, 800, WIDTH, HEIGHT, null);
-		//g.setColor(Color.WHITE);
+		g.drawImage(spaceImg, 0, 0, LeagueInvaders.width, LeagueInvaders.height, null);
+		g.setColor(Color.WHITE);
 		g.drawString("Score: " + ObjectManager.score, 50, 50);
 		manager.draw(g);
 
@@ -104,6 +104,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.BLACK);
 		g.setFont(endFont);
 		g.drawString("GAME OVER!", 80, 150);
+		g.setFont(startFont);
+		g.drawString("Final Score: " + ObjectManager.score, 80, 250);
+		g.drawString("Press SPACE to play again", 80, 350);
 	}
 
 	@Override
@@ -186,6 +189,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if(currentState == END_STATE) {
 			rocket = new Rocketship(250, 700, 50, 50);
 			manager = new ObjectManager(rocket);
+		}
+		if(currentState == END_STATE && KeyEvent.VK_SPACE == e.getKeyCode()) {
+			currentState  = GAME_STATE;
+			ObjectManager.score = 0;
 		}
 	}
 
