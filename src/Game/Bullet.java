@@ -1,7 +1,9 @@
-package intro_to_array_lists;
+package Game;
 
 import java.awt.Color;
 import java.awt.Graphics;
+
+import intro_to_array_lists.GamePanel;
 
 public class Bullet {
 	int speed = 10;

@@ -1,4 +1,4 @@
-package intro_to_array_lists;
+package Game;
 //HERE ARE SOME CHANGES!!!
 
 import java.awt.Color;
@@ -22,10 +22,9 @@ public class Level2FinalGame extends JPanel implements ActionListener, KeyListen
 	private static final long serialVersionUID = 1L;
 	public static final int WIDTH = 1000;
 	public static final int HEIGHT = 600;
-
 	JFrame window;
 	Timer timer;
-	int x = 50;
+	static int x = 50;
 
 	Player p1 = new Player(x, 50, 100, 100);
 

@@ -1,4 +1,4 @@
-package intro_to_array_lists;
+package Game;
 
 import java.awt.Color;
 import java.awt.Graphics;
