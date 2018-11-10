@@ -21,8 +21,8 @@ public class FinalGamePanel{
 
 	FinalGamePanel() {
 		titleFont = new Font("Helvetica Neue", Font.PLAIN, 48);
-	}
-	{
+	
+	
 	try {
 
         faceImg = ImageIO.read(this.getClass().getResourceAsStream("smile.png"));
@@ -37,6 +37,7 @@ public class FinalGamePanel{
 
 }
 	}
+
 
 	
 
@@ -59,9 +60,11 @@ public class FinalGamePanel{
 	}
 
 	void drawGameState(Graphics g) {
-		Camera cam = new Camera(0, 0, 1000, 600);
-		g.drawRect(Level2FinalGame.x - cam.x, 50, Level2FinalGame.WIDTH, Level2FinalGame.HEIGHT);
-		System.out.println(cam.x);
+		//g.drawImage(FinalGamePanel.faceImg,Player.x, Player.y, Player.width, Player.height, null);
+		//Camera cam = new Camera(Player.x, 0, 1000, 600);
+		//g.drawRect(Level2FinalGame.x - cam.x, 50, Level2FinalGame.WIDTH, Level2FinalGame.HEIGHT);
+		//g.drawRect(Level2FinalGame.x - cam.x, 0, Level2FinalGame.WIDTH, Level2FinalGame.HEIGHT);
+		
 	}
 
 	void drawEndState(Graphics g) {

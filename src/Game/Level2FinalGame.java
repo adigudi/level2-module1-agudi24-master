@@ -24,11 +24,15 @@ public class Level2FinalGame extends JPanel implements ActionListener, KeyListen
 	public static final int HEIGHT = 600;
 	JFrame window;
 	Timer timer;
-	static int x = 50;
+	static int x = 0;
 
-	Player p1 = new Player(x, 50, 100, 100);
-
-	ArrayList<Platform> platforms = new ArrayList<Platform>();
+	Player p1 = new Player(Player.x, 50, 100, 100);
+	Random r = new Random();
+	int rand = r.nextInt(450);
+	int rand2 = r.nextInt(450);
+	int rand3 = r.nextInt(450);
+    int rand4 = r.nextInt(450);
+	static ArrayList<Platform> platforms = new ArrayList<Platform>();
 
 	public static void main(String[] args) {
 		new Level2FinalGame().run();
@@ -43,19 +47,15 @@ public class Level2FinalGame extends JPanel implements ActionListener, KeyListen
 		window.setVisible(true);
 		window.pack();
 		timer = new Timer(1000 / 60, this);
-		Random r = new Random();
-		int rand = r.nextInt(450);
-		int rand2 = r.nextInt(450);
-		int rand3 = r.nextInt(450);
-		int rand4 = r.nextInt(450);
-
+		
 		platforms.add(new Platform(700, rand, 200, 50));
 		platforms.add(new Platform(500, rand2, 200, 50));
 		platforms.add(new Platform(300, rand3, 200, 50));
 		platforms.add(new Platform(100, rand4, 200, 50));
 
 		timer.start();
-
+		System.out.println(x);
+		
 	}
 
 	public void paintComponent(Graphics g) {
@@ -122,6 +122,10 @@ public class Level2FinalGame extends JPanel implements ActionListener, KeyListen
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			timer.stop();
 			System.exit(0);
+		}
+		System.out.println(Player.x);
+		if(Player.x > 890) {
+			Player.x = 0;
 		}
 	}
 

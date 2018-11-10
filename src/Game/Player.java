@@ -60,16 +60,14 @@ public class Player {
 			canJump = true;
 		}
 
-		x = x + 10;
-
 		cBox.setBounds(x, y, width, height);
 	}
 
 	public void draw(Graphics g) {
-		g.setColor(Color.BLUE);
-		g.fillRect(x, y, width, height);
+		//g.setColor(Color.BLUE);
+		//g.fillRect(x, y, width, height);
 		g.drawImage(FinalGamePanel.faceImg, x, y, width, height, null);
-		
+
 	}
 
 	public Rectangle getCBox() {
